@@ -56,7 +56,13 @@
 				if (options.activeToolbarClass) {
 					$(options.toolbarSelector).find(toolbarBtnSelector).each(function () {
 						var command = $(this).data(options.commandRole);
-						var commandNoArgs = command.slice(0, command.indexOf(' '));
+						var commandNoArgs; // Temporarily store index, replace with command.
+
+						if ((commandNoArgs = command.indexOf(' ')) >= 0) {
+							commandNoArgs = command.slice(0, commandNoArgs);
+						} else {
+							commandNoArgs = command;
+						}
 						if (document.queryCommandState(command)) {
 							$(this).addClass(options.activeToolbarClass);
 						} else if (commandNoArgs + ' ' + document.queryCommandValue(commandNoArgs) === command) {
