@@ -244,7 +244,7 @@
 					execCommand($(this).data(options.commandRole));
 					saveSelection();
 				});
-				toolbar.find('[data-toggle=dropdown]').click(restoreSelection);
+				toolbar.children('[data-toggle=dropdown]').click(restoreSelection);
 
 				toolbar.find('input[type=text][data-' + options.commandRole + ']').on(namespaceEvents('webkitspeechchange change'), function () {
 					var newValue = this.value; /* ugly but prevents fake double-calls due to selection restoration */
